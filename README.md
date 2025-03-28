@@ -1,6 +1,6 @@
 # dev-aliases
 
-My command aliases required for a full-stack developer
+My command aliases required for a Javascript/Node Full-Stack developers (*of course you can modify commands with by forking for yourself*). Why we need this? To save time and avoid typing long commands. This is a collection of my aliases for different platforms.
 
 ## Installation Windows
 
@@ -28,17 +28,16 @@ See more info: [Source](https://stackoverflow.com/a/39459404/6940144)
 
 Long command is `php artisan serve`. Short command is `pas`. We are calling aliases by file name.
 
-
 ## Installation Linux
 
-...
+... (WIP)
 
 ## Installation MacOS
 
 > [!WARNING]  
 > This script created for automatic alias sync to your **zsh** profile. You need to backup your `/Users/{username}/.zshrc` file before run sync script.
 
-Run sync command
+Run sync command:
 
 ```bash
 sh src/macos/sync.sh
