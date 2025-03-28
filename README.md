@@ -1,4 +1,4 @@
-# dev-aliases
+# Dev Aliases
 
 My command aliases required for a Javascript/Node Full-Stack developers (*of course you can modify commands with by forking for yourself*). Why we need this? To save time and avoid typing long commands. This is a collection of my aliases for different platforms.
 
