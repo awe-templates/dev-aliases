@@ -8,6 +8,7 @@
 declare -a aliases=(
     # Basic
     "alias c='clear'"
+    "alias l='ls -lah'"
 
     # Docker
     "alias docup='docker compose up'"
