@@ -39,6 +39,8 @@ declare -a aliases=(
     # Composer
     "alias ci='composer install'"
     "alias cu='composer update'"
+    "alias ct='composer test'"
+    "alias crv='if [ -d \"./vendor\" ]; then rm -rf \"./vendor\"; echo \"Removed ./vendor directory\"; fi; if [ -f \"./composer.lock\" ]; then rm \"./composer.lock\"; echo \"Removed ./composer.lock file\"; fi'"
 
     # Angular
     "alias ngs='ng serve --host 0.0.0.0 --port 4200 --disable-host-check --live-reload=false'"
