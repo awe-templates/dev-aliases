@@ -57,6 +57,10 @@ declare -a aliases=(
     "alias paop='php artisan optimize'"
     "alias paopc='php artisan optimize:clear'"
     "alias pat='php artisan test'"
+
+    # Claude
+    "alias cc='claude'"
+    "alias ccf='npx claude-flow@alpha hive-mind spawn \"wait my commands\" --claude'"
 )
 
 # .zshrc file path
