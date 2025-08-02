@@ -60,6 +60,7 @@ declare -a aliases=(
 
     # Claude
     "alias cc='claude'"
+    "alias ccd='claude --dangerously-skip-permissions'"
     "alias ccf='npx claude-flow@alpha hive-mind spawn \"wait my commands\" --claude'"
 )
 
