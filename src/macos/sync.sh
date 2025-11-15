@@ -35,6 +35,8 @@ declare -a aliases=(
     # PNPM General Scripts
     "alias prd='pnpm dev'"
     "alias prs='pnpm start'"
+    "alias prt='pnpm test'"
+    "alias prb='pnpm build'"
 
     # Composer
     "alias ci='composer install'"
