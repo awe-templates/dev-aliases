@@ -60,6 +60,14 @@ declare -a aliases=(
     "alias paopc='php artisan optimize:clear'"
     "alias pat='php artisan test'"
     "alias phps='php -S 127.0.0.1:8000 index.php'"
+    "alias pint='./vendor/bin/pint'"
+
+    # PHP Tools
+    "alias phpfix='php vendor/bin/php-cs-fixer fix ./'"
+    "alias phpstan='./vendor/bin/phpstan analyse --memory-limit=2G'"
+
+    # PNPM Self Update
+    "alias up='pnpm self-update'"
 
     # Claude
     "alias cc='claude'"
