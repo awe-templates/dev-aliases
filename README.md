@@ -67,5 +67,6 @@ Terminal will restart automatically to apply changes.
 | `phps` | `php -S 127.0.0.1:8000 index.php` | PHP |
 | `phpfix` | `php vendor/bin/php-cs-fixer fix ./` | PHP |
 | `phpstan` | `./vendor/bin/phpstan analyse` | PHP |
+| `kp` | Kill process on port (usage: `kp 3000`) | Utility |
 | `cc` | `claude` | Claude |
 | `ccd` | `claude --dangerously-skip-permissions` | Claude |

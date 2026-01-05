@@ -69,6 +69,9 @@ declare -a aliases=(
     # PNPM Self Update
     "alias up='pnpm self-update'"
 
+    # Utility
+    "kp() { lsof -ti tcp:\$1 | xargs kill -9 2>/dev/null && echo \"Killed process on port \$1\" || echo \"No process found on port \$1\"; }"
+
     # Claude
     "alias cc='claude'"
     "alias ccd='claude --dangerously-skip-permissions'"

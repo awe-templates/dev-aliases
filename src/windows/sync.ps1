@@ -92,6 +92,18 @@ function phpfix { php vendor/bin/php-cs-fixer fix ./ }
 function phpstan { ./vendor/bin/phpstan analyse --memory-limit=2G }
 function pint { ./vendor/bin/pint }
 
+# Utility
+function kp {
+    param([int]$port)
+    $process = Get-NetTCPConnection -LocalPort $port -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -Unique
+    if ($process) {
+        Stop-Process -Id $process -Force
+        Write-Host "Killed process on port $port"
+    } else {
+        Write-Host "No process found on port $port"
+    }
+}
+
 # Claude
 function cc { claude }
 function ccd { claude --dangerously-skip-permissions }
