@@ -63,6 +63,7 @@ Terminal will restart automatically to apply changes.
 | `paop` | `php artisan optimize` | Laravel |
 | `paopc` | `php artisan optimize:clear` | Laravel |
 | `pat` | `php artisan test` | Laravel |
+| `patp` | `php artisan test --parallel` | Laravel |
 | `pint` | `./vendor/bin/pint` | Laravel |
 | `phps` | `php -S 127.0.0.1:8000 index.php` | PHP |
 | `phpfix` | `php vendor/bin/php-cs-fixer fix ./` | PHP |

@@ -59,6 +59,7 @@ declare -a aliases=(
     "alias paop='php artisan optimize'"
     "alias paopc='php artisan optimize:clear'"
     "alias pat='php artisan test'"
+    "alias patp='php artisan test --parallel'"
     "alias phps='php -S 127.0.0.1:8000 index.php'"
     "alias pint='./vendor/bin/pint'"
 

@@ -85,6 +85,7 @@ function pamr { php artisan migrate:rollback }
 function paop { php artisan optimize }
 function paopc { php artisan optimize:clear }
 function pat { php artisan test }
+function patp { php artisan test --parallel }
 
 # PHP
 function phps { php -S 127.0.0.1:8000 index.php }
