@@ -11,8 +11,8 @@ declare -a aliases=(
     "alias l='ls -lah'"
 
     # Docker
-    "alias docup='docker compose up'"
-    "alias docupd='docker compose up -d'"
+    "alias dcu='docker compose up'"
+    "alias dcud='docker compose up -d'"
 
     # Node
     "alias nap='node app.js'"

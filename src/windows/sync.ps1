@@ -9,8 +9,8 @@ function c { cls }
 function l { Get-ChildItem -Force }
 
 # Docker
-function docup { docker compose up }
-function docupd { docker compose up -d }
+function dcu { docker compose up }
+function dcud { docker compose up -d }
 
 # Node
 function nap { node app.js }
