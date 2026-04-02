@@ -76,6 +76,7 @@ declare -a aliases=(
     # Claude
     "alias cc='claude'"
     "alias ccd='claude --dangerously-skip-permissions'"
+    "alias ccdr='claude --dangerously-skip-permissions --resume'"
 )
 
 # .zshrc file path

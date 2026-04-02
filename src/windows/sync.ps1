@@ -108,6 +108,7 @@ function kp {
 # Claude
 function cc { claude }
 function ccd { claude --dangerously-skip-permissions }
+function ccdr { claude --dangerously-skip-permissions --resume }
 '@
 
 # PowerShell profile path
