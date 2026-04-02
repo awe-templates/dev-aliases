@@ -51,6 +51,7 @@ declare -a aliases=(
     # Laravel
     "alias pak='php artisan key:generate'"
     "alias pas='php artisan serve --port=8000'"
+    "alias pas80='sudo php artisan serve --port=80'"
     "alias pass='php artisan serve --port=9000'"
     "alias pam='php artisan migrate'"
     "alias pamf='php artisan migrate:fresh'"

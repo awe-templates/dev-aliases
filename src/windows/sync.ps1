@@ -77,6 +77,7 @@ function ngss { ng serve --host 0.0.0.0 --port 4444 --disable-host-check --live-
 # Laravel
 function pak { php artisan key:generate }
 function pas { php artisan serve --port=8000 }
+function pas80 { php artisan serve --port=80 }
 function pass { php artisan serve --port=9000 }
 function pam { php artisan migrate }
 function pamf { php artisan migrate:fresh }
