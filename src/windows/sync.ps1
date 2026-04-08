@@ -86,6 +86,7 @@ function pamr { php artisan migrate:rollback }
 function paop { php artisan optimize }
 function paopc { php artisan optimize:clear }
 function pat { php artisan test }
+function patc { php artisan test --parallel --compact }
 function patp { php artisan test --parallel }
 
 # PHP
