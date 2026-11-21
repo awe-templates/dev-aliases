@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-# prx: run a shell command through the repository's reflex proxy, so the
-# command and its output land in <repo>/.reflex/command-executions.json.
-# Outside a repository whose package.json has a "reflex" script, it simply
-# runs the command, so prx is safe to use anywhere.
+# prx: run a shell command through the reflex proxy, so the command and its
+# output land in the reflex history (.reflex/command-executions.json) of the
+# repository or workspace you are in. Where no reflex serves the folder, it
+# simply runs the command, so prx is safe to use anywhere.
 #
 #   prx 'git status --short | wc -l'   quote it when it has pipes, && or $
 #   prx git log --oneline -3
 #
 # It is an executable on PATH rather than a shell alias, so it also works in
 # scripts, in `zsh -c`, and in AI agent shells that never read ~/.zshrc.
+# See reflex-lib.sh for how the reflex CLI is found.
 set -u
 
 if [ "$#" -eq 0 ]; then
@@ -18,18 +19,12 @@ fi
 
 cmd="$*"
 
-# The superproject when called inside a submodule, else the repository root.
-root=$(git rev-parse --show-superproject-working-tree 2>/dev/null)
-[ -z "$root" ] && root=$(git rev-parse --show-toplevel 2>/dev/null)
+# shellcheck source=reflex-lib.sh
+. "$(dirname "$0")/reflex-lib.sh"
 
-entry=""
-if [ -n "$root" ] && [ -f "$root/package.json" ]; then
-  # "reflex": "node <path>" in package.json scripts; read without starting node.
-  entry=$(sed -n 's/.*"reflex"[[:space:]]*:[[:space:]]*"node \([^"]*\)".*/\1/p' "$root/package.json" | head -n 1)
-fi
-
-if [ -n "$entry" ] && [ -f "$root/$entry" ]; then
-  REFLEX_CWD="$PWD" exec node "$root/$entry" run -- "$cmd"
+if resolve_reflex; then
+  [ -n "$reflex_root" ] && export REFLEX_ROOT="$reflex_root"
+  REFLEX_CWD="$PWD" exec node "$reflex_cli" run -- "$cmd"
 fi
 
 exec "${SHELL:-/bin/sh}" -c "$cmd"

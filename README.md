@@ -78,4 +78,7 @@ Installed into `~/bin` by `src/macos/sync.sh` (macOS). Unlike the aliases they a
 
 | Command | What it does |
 |---------|--------------|
-| `prx <command>` | Runs a shell command through the repository's reflex proxy (`reflex run`), so the command and its output are recorded in `.reflex/command-executions.json`. Quote the command when it has pipes, `&&` or `$`. Outside a repository with a `reflex` script it simply runs the command. |
+| `prx <command>` | Runs a shell command through the repository's reflex proxy (`reflex run`), so the command and its output are recorded in `.reflex/command-executions.json`. Quote the command when it has pipes, `&&` or `$`. In a folder whose `.claude/settings.json` wires the reflex hooks (a workspace of several repositories) it records into that folder's history. Elsewhere it simply runs the command. |
+| `rxh [--last n] [--failed] [--grep word] [--show n] [--top]` | Shows the reflex history of the repository or workspace you are in (`reflex history`). |
+
+`prx` and `rxh` share `reflex-lib.sh`, which finds the reflex CLI: a repository's `reflex` package script first, else the shared CLI (`REFLEX_CLI`, default in the ngeen-platform checkout) for a workspace folder that wires the reflex hooks.

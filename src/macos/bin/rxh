@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# rxh: the reflex command history of the repository or workspace you are in
+# (reflex history), from any folder inside it.
+#
+#   rxh                  the latest 20 runs
+#   rxh --last 50        more
+#   rxh --failed         failed runs only
+#   rxh --grep nx        runs whose command or output mention a word
+#   rxh --show 1         the latest run in full (2 is the one before)
+#   rxh --top            the most repeated commands, to promote
+#
+# See reflex-lib.sh for how the reflex CLI is found.
+set -u
+
+# shellcheck source=reflex-lib.sh
+. "$(dirname "$0")/reflex-lib.sh"
+
+if ! resolve_reflex; then
+  echo "rxh: no reflex history serves this folder" >&2
+  exit 2
+fi
+
+[ -n "$reflex_root" ] && export REFLEX_ROOT="$reflex_root"
+exec node "$reflex_cli" history "$@"
