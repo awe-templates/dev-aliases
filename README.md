@@ -71,3 +71,11 @@ Terminal will restart automatically to apply changes.
 | `kp` | Kill process on port (usage: `kp 3000`) | Utility |
 | `cc` | `claude` | Claude |
 | `ccd` | `claude --dangerously-skip-permissions` | Claude |
+
+## Executables
+
+Installed into `~/bin` by `src/macos/sync.sh` (macOS). Unlike the aliases they also work in scripts, `zsh -c` and AI agent shells, which never read `~/.zshrc`.
+
+| Command | What it does |
+|---------|--------------|
+| `prx <command>` | Runs a shell command through the repository's reflex proxy (`reflex run`), so the command and its output are recorded in `.reflex/command-executions.json`. Quote the command when it has pipes, `&&` or `$`. Outside a repository with a `reflex` script it simply runs the command. |

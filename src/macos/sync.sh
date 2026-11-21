@@ -81,6 +81,29 @@ declare -a aliases=(
     "alias ccdr='claude --dangerously-skip-permissions --resume'"
 )
 
+# ---------------------
+# Install executables
+# ---------------------
+
+# Commands that must also work in scripts and non interactive shells (where
+# ~/.zshrc aliases do not exist) are executables under src/macos/bin. They are
+# installed into ~/bin, which must be on PATH.
+bin_source="$(cd "$(dirname "$0")" && pwd)/bin"
+bin_target="$HOME/bin"
+
+mkdir -p "$bin_target"
+
+for executable in "$bin_source"/*; do
+    [ -f "$executable" ] || continue
+    install -m 0755 "$executable" "$bin_target/$(basename "$executable")"
+    echo "Installed $(basename "$executable") into ~/bin"
+done
+
+case ":$PATH:" in
+    *":$bin_target:"*) ;;
+    *) echo "Add ~/bin to PATH to use the installed executables" ;;
+esac
+
 # .zshrc file path
 zshrc_file="$HOME/.zshrc"
 
@@ -98,6 +121,12 @@ cat "$backup_file" >"$temp_file"
 if grep -q "#region dev aliases" "$zshrc_file"; then
     # Remove existing region content, but keep the region tags
     sed -i '' "/#region dev aliases/,/#endregion/d" "$temp_file"
+fi
+
+# A file whose last line has no newline would glue the region tag onto it
+# ("}#region dev aliases") and break the shell's parse; end it first.
+if [ -s "$temp_file" ] && [ -n "$(tail -c 1 "$temp_file")" ]; then
+    echo >>"$temp_file"
 fi
 
 # Add the region start and end tags and aliases to the temporary file
