@@ -113,6 +113,30 @@ function ccd { claude --dangerously-skip-permissions }
 function ccdr { claude --dangerously-skip-permissions --resume }
 '@
 
+# ---------------------
+# Install executables
+# ---------------------
+
+# Commands that must also work in scripts and shells that never load the
+# profile (where the functions above do not exist) live under
+# src/windows/bin: a .ps1 for PowerShell and a .cmd launcher for cmd.exe and
+# scripts. They are installed into ~/bin, which must be on PATH.
+$binSource = Join-Path $PSScriptRoot 'bin'
+$binTarget = Join-Path $HOME 'bin'
+
+New-Item -Path $binTarget -ItemType Directory -Force | Out-Null
+
+Get-ChildItem -Path $binSource -File | ForEach-Object {
+    Copy-Item $_.FullName (Join-Path $binTarget $_.Name) -Force
+    Write-Host "Installed $($_.Name) into ~/bin"
+}
+
+$userPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+if (-not (($userPath -split ';') -contains $binTarget)) {
+    Write-Host "Add ~/bin to PATH to use the installed executables:"
+    Write-Host "  [Environment]::SetEnvironmentVariable('Path', `"`$env:Path;$binTarget`", 'User')"
+}
+
 # PowerShell profile path
 $profilePath = $PROFILE
 

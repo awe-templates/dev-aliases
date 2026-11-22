@@ -74,7 +74,7 @@ Terminal will restart automatically to apply changes.
 
 ## Executables
 
-Installed into `~/bin` by `src/macos/sync.sh` (macOS). Unlike the aliases they also work in scripts, `zsh -c` and AI agent shells, which never read `~/.zshrc`.
+Installed into `~/bin` by `src/macos/sync.sh` (macOS) and `src/windows/sync.ps1` (Windows). Unlike the aliases they also work in scripts, `zsh -c` and AI agent shells, which never read `~/.zshrc`.
 
 | Command | What it does |
 |---------|--------------|
@@ -82,3 +82,5 @@ Installed into `~/bin` by `src/macos/sync.sh` (macOS). Unlike the aliases they a
 | `rxh [--last n] [--failed] [--grep word] [--show n] [--top]` | Shows the reflex history of the repository or workspace you are in (`reflex history`). |
 
 `prx` and `rxh` share `reflex-lib.sh`, which finds the reflex CLI: a repository's `reflex` package script first, else the shared CLI (`REFLEX_CLI`, default in the ngeen-platform checkout) for a workspace folder that wires the reflex hooks.
+
+On Windows they are `prx.ps1` and `rxh.ps1` with `prx.cmd` and `rxh.cmd` launchers for cmd.exe and scripts, sharing `reflex-lib.ps1`. `reflex run` starts the command with `$SHELL -c`, so `prx` points `SHELL` at Git Bash when it is set to nothing; without Git Bash the command runs in PowerShell and is not recorded. The Windows scripts have not been run on Windows yet.
